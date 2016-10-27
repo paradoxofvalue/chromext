@@ -1,0 +1,14 @@
+{
+    "name": "chromext",
+    "version": "0.1",
+    "description": "chrome extension for 1 level sites",
+    "permissions": [
+        "tabs"
+    ],
+    "browser_action": {
+        "default_title": "make site clone",
+        "default_icon": "images/icon.png",
+        "popup": "popup.html"
+    },
+    "options_page": "options.html"
+}
