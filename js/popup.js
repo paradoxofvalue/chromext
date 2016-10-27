@@ -1,5 +1,2 @@
 "use strict";
-
-window.onload = function() {
-    alert('Я работаю сцуко!');
-}
+document.body.style.background = "red";
