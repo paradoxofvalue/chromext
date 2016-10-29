@@ -13,8 +13,9 @@ function deleteTrash() {
                 if (!isAllow) elements[i].remove();
                 break;
             case "SCRIPT":
+            case "NOSCRIPT":
             case "IFRAME":
-                case "LINK"  :
+            case "LINK"  :
                 elements[i].remove();
                 break;
             default:
