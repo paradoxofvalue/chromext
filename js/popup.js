@@ -15,7 +15,7 @@ function deleteTrash() {
             case "SCRIPT":
             case "NOSCRIPT":
             case "IFRAME":
-            case "LINK"  :
+            case "LINK":
                 elements[i].remove();
                 break;
             default:
@@ -25,10 +25,17 @@ function deleteTrash() {
         }
     }
 }
+
 function setRobots() {
-	var temp = document.head.innerHTML;
-	document.head.innerHTML = '<meta name="robots" content="noindex,nofollow">' + temp;
+    var temp = document.head.innerHTML;
+    document.head.innerHTML = '<meta name="robots" content="noindex,nofollow">' + temp;
 }
+
+function setStyles() {
+    var temp = document.head.innerHTML;
+    document.head.innerHTML = '<style>' + parseCSS() + '</style>' + temp;
+}
+
 function parseCSS() {
 
     var parsedCSS = '',
@@ -37,13 +44,17 @@ function parseCSS() {
     for (var i = 0; i < links.length; i++) {
 
         var linkHref = links[i].getAttribute('href'),
-            name = linkHref.split('?', 1);
+            name = linkHref.split('?', 1) || linkHref.split('[', 1);
 
-        if (name.slice(-4) == '.css') {
-
+        if (name.match(/.{0,}.css/gi)) {
+            name = name.replace(/(?!.{0,}.css).{1,}/gi, "") + 'css';
             var xhr = new XMLHttpRequest();
 
-            xhr.open('GET', linkHref);
+
+
+            xhr.open('GET', name);
+
+            xhr.setRequestHeader("Access-Control-Allow-Origin", "www.ifixit.com");
 
             xhr.onload = function() { parsedCSS += xhr.responseText };
 
@@ -51,6 +62,31 @@ function parseCSS() {
 
         }
     }
+    console.log(parsedCSS);
 }
+
+
+
+
+
+
+setStyles();
 deleteTrash();
 setRobots();
+
+
+
+
+
+var parsedCSS = '',
+    links = document.getElementsByTagName('link');
+
+for (var i = 0; i < links.length; i++) {
+
+    var linkHref = links[i].getAttribute('href'),
+        name = linkHref.split('?', 1) || linkHref;
+
+    if (name.match(/.{0,}.css/gi)) {
+        console.log(name.replace(/(?!.{0,}.css).{1,}/gi, "") + 'css');
+    }
+}
