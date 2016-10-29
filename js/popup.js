@@ -51,14 +51,16 @@ function parseCSS() {
             var xhr = new XMLHttpRequest();
 
 
+            try {
+                xhr.open('GET', name);
 
-            xhr.open('GET', name);
+                xhr.onload = function() { parsedCSS += xhr.responseText };
 
-            xhr.setRequestHeader("Access-Control-Allow-Origin", "www.ifixit.com");
+                xhr.send();
+            } catch (err) {
 
-            xhr.onload = function() { parsedCSS += xhr.responseText };
+            }
 
-            xhr.send();
 
         }
     }
