@@ -29,6 +29,28 @@ function setRobots() {
 	var temp = document.head.innerHTML;
 	document.head.innerHTML = '<meta name="robots" content="noindex,nofollow">' + temp;
 }
+function parseCSS() {
 
+    var parsedCSS = '',
+        links = document.getElementsByTagName('link');
+
+    for (var i = 0; i < links.length; i++) {
+
+        var linkHref = links[i].getAttribute('href'),
+            name = linkHref.split('?', 1);
+
+        if (name.slice(-4) == '.css') {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', linkHref);
+
+            xhr.onload = function() { parsedCSS += xhr.responseText };
+
+            xhr.send();
+
+        }
+    }
+}
 deleteTrash();
 setRobots();
