@@ -11,11 +11,11 @@ function deleteTrash() {
             case "A":
                 elements[i].setAttribute('href', '#');
                 break;
-            case "FORM": 
+            case "FORM":
                 if (elements[i].hasAttribute('action')) {
                     elements[i].removeAttribute('action');
                 }
-                break;                
+                break;
             case "META":
                 let isAllow = elements[i].hasAttribute('charset') || elements[i].getAttribute('name') == 'viewport' || elements[i].getAttribute('http-equiv') == 'content-type';
                 if (!isAllow) elements[i].remove();
@@ -45,23 +45,20 @@ function setRobots() {
 
 function go() {
     var childNodes = document.html.childNodes;
-
     for (var i = 0; i < childNodes.length; i++) {
         childNodes[i]
     }
 }
 
-function getComments(d)
-{
-    if(!d)
+function getComments(d) {
+    if (!d)
         return;
-    if(d.nodeType==8){
+    if (d.nodeType == 8) {
         d.remove();
-        console.log("found a comment node " + d.data);
     }
-    if(!d.childNodes)
+    if (!d.childNodes)
         return;
-    for(var i=0;i<d.childNodes.length;i++)
+    for (var i = 0; i < d.childNodes.length; i++)
         getComments(d.childNodes[i]);
 }
 
