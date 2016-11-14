@@ -37,10 +37,10 @@ function deleteTrash() {
     }
 }
 
-
 function setRobots() {
     let temp = document.head.innerHTML;
     document.head.innerHTML = '<meta name="robots" content="noindex,nofollow">' + temp;
+    console.log(temp);
 }
 
 function go() {
