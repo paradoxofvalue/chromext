@@ -32,7 +32,7 @@
                     if (!isAllow) elements[i].remove();
                     break;
                 case "LINK":
-                    if (elements[i].hasAttribute('rel') != "stylesheet") 
+                    if (elements[i].getAttribute('rel') != "stylesheet") 
                     {
                         elements[i].remove();
                     }
