@@ -67,13 +67,13 @@ function setRobots()
 }
 
 
-function go() 
-{
-    var childNodes = document.html.childNodes;
-    for (var i = 0; i < childNodes.length; i++) {
-        childNodes[i]
-    }
-}
+// function go()
+// {
+//     var childNodes = document.html.childNodes;
+//     for (var i = 0; i < childNodes.length; i++) {
+//         childNodes[i];
+//     }
+// }
 
 function getComments(d) 
 {
