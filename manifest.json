@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "chromext",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "chrome extension for 1 level sites",
     "permissions": [
         "activeTab"
@@ -13,7 +13,7 @@
     },
     "browser_action": {
         "default_title": "make site clone",
-        "default_icon": "images/icon.png"
-            // "default_popup": "popup.html"
+        "default_icon": "images/icon.png",
+        "default_popup": "popup.html"
     }
 }
