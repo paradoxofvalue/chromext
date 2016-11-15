@@ -83,9 +83,16 @@
         }
     }
 
+    function changeTitle() {
+        let title = document.querySelector('title'),
+            name = prompt('Название');
+        title.innerHTML = name;
+    }
 
     getComments(document);
 
     deleteTrash();
 
     setRobots();
+
+    changeTitle();
